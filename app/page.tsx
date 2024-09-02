@@ -6,6 +6,7 @@ import { About} from "@/components/sections/About";
 import { Practice } from "@/components/sections/Practice";
 import { NavbarWrapper } from "@/components/navigation/NavbarWrapper";
 import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/sections/Footer";
 
 export default async function Home() {
   const pageData = await getPages();
@@ -21,6 +22,7 @@ export default async function Home() {
       <Practice {...practice} />
       <About about={about} />
       <Contact {...contact} />
+      <Footer />
     </main>
   );
 }

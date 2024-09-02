@@ -1,6 +1,7 @@
 "use server"
-import nodemailer from 'nodemailer';
+// import nodemailer from 'nodemailer';
 import sgMail from '@sendgrid/mail';
+import { ContactFormInputs } from '@/components/contactForm/ContactForm';
 
 // const transporter = nodemailer.createTransport({
 //     host: "smtp.ethereal.email",
@@ -12,23 +13,34 @@ import sgMail from '@sendgrid/mail';
 //     },
 //   });
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
 const emailParams = {
   to: 'contact@lovecchiolaw.com',
   from: 'contact@lovecchiolaw.com',
   subject: 'Website Contact Form Submission',
 }
 
-export const submitContact = async (message) => {
-    console.log('message', message);
-    // return {
-        // sgMail
-        // .send(msg)
-        // .then(() => {
-        //   console.log('Email sent')
-        // })
-        // .catch((error) => {
-        //   console.error(error)
-        // })
-    // }
+
+const createMessage = (contactFormData: ContactFormInputs) => `
+    Message from: ${contactFormData.firstName} ${contactFormData.lastName}
+    Email: ${contactFormData.email}
+    Phone: ${contactFormData.phoneNumber}
+    Message: ${contactFormData.message}
+`
+
+export const submitContact = async (contactFormData: ContactFormInputs) => {
+    console.log('submitContact', contactFormData);
+    const sgData = { ...emailParams, text: createMessage(contactFormData)}
+    console.log('sg data', sgData); 
+    // return (
+    //     sgMail
+    //         .send(sgData)
+    //         .then(() => {
+    //         console.log('Email sent')
+    //         })
+    //         .catch((error) => {
+    //             console.log('error submitting sendgrid')
+    //             console.error(error)
+    //         })
+    // )
 }

@@ -1,6 +1,6 @@
 import { Heading, Section } from "@radix-ui/themes";
 import { ContentContainer } from "../container/ContentContainer";
-import { PracticePanel } from "../PracticePanel";
+import { PracticePanel } from "../practicePanel/PracticePanel";
 
 // export type PracticeUi = Partial<Practice>
 

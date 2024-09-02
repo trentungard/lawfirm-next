@@ -1,6 +1,6 @@
 import { Contact as ContactType } from "@/lovecchio-law/sanity.types"
 import { Box, Heading, Text, Section, Flex } from "@radix-ui/themes"
-import { ContactForm } from "../ContactForm"
+import { ContactForm } from "../contactForm/ContactForm"
 import { ContentContainer } from "../container/ContentContainer"
 
 type ContactUi = Partial<ContactType>
