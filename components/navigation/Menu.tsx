@@ -1,7 +1,7 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@radix-ui/react-navigation-menu"
 import Link from "next/link"
 import { useMemo } from "react"
-import { Button, IconButton } from "@radix-ui/themes"
+import { Button } from "@radix-ui/themes"
 import { Phone } from "lucide-react"
 import { cva } from "class-variance-authority"
 

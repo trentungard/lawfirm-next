@@ -1,5 +1,4 @@
 'use client';
-
 import { Box, Flex, Heading, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";
 import Image from 'next/image';
@@ -13,7 +12,7 @@ export const PracticePanel: React.FC<any> = ({items}) => {
         setSelectedKey(firstItem._key);
     }, [items])
 
-    const selectedItem = useMemo(() => items.filter((item) => item._key === selectedKey)[0], [items, selectedKey]);
+    const selectedItem = useMemo(() => items.filter((item: any) => item._key === selectedKey)[0], [items, selectedKey]);
     const updateSelectedKey = (key: string) => setSelectedKey(key);
 
     return (
@@ -25,7 +24,7 @@ export const PracticePanel: React.FC<any> = ({items}) => {
                         <Text as="p" className='mt-6' size="7">{selectedItem.description}</Text>
                     </Box>
                     <Flex className='grow gap-4 min-w-[316px] flex-wrap'>
-                        {items.map((item) => {
+                        {items.map((item: any) => {
                             return (
                                 <Box className='w-[150px] h-[150px] relative cursor-pointer drop-shadow-md hover:drop-shadow-lg' onClick={() => updateSelectedKey(item._key)} key={item._key}>
                                     { /* eslint-disable-next-line @next/next/no-img-element */ }

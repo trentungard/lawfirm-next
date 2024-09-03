@@ -1,8 +1,8 @@
-import { AboutCard as AboutCardType } from "@/lovecchio-law/sanity.types"
+import { AboutCard as AboutCardContent } from "@/lovecchio-law/sanity.types"
 import { Section } from "@radix-ui/themes";
 import { AboutCard } from "../ui/about-card";
 
-type About = { about: Partial<AboutCardType>[]; }
+type About = { about: Partial<AboutCardContent>[]; }
 
 export const About: React.FC<About> = ({about}) => {
     return (

@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormInputsSchema } from "./ContactFormSchema";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useCallback, useEffect, useState } from "react";
+import { ErrorMessage } from "@hookform/error-message"
 
 export const WithFormState = (Default: any) => {
     const { control, handleSubmit, formState } = useForm<ContactFormInputs>({resolver: zodResolver(contactFormInputsSchema)});
@@ -23,14 +24,6 @@ export const WithFormState = (Default: any) => {
         return (
             <Text>
                 Loading...
-            </Text>
-        )
-    }
-
-    if(!formState.isValid && formState.submitCount > 0) {
-        return (
-            <Text>
-                There are errors.
             </Text>
         )
     }
@@ -52,21 +45,26 @@ export const WithFormState = (Default: any) => {
     }
 
     return (
-        <Default control={control} setHasVerificationError={setHasVerificationError} onSubmit={handleSubmit(async (data) => await onSubmit(data))} />
+        <Default 
+            control={control} 
+            setHasVerificationError={setHasVerificationError} 
+            onSubmit={handleSubmit(async (data) => await onSubmit(data))} 
+            errors={formState.errors} 
+        />
     )
-}
+};
 
 export const Fields: React.FC<any> = (props: any) => {
-    const {control, onSubmit } = props;
+    const {control, errors, onSubmit } = props;
     const { executeRecaptcha } = useGoogleReCaptcha();
-    // Create an event handler so you can call the verification on button click event or form submit
+
     const handleReCaptchaVerify = useCallback(async () => {
       if (!executeRecaptcha) {
         console.log('Execute recaptcha not yet available');
         return;
       }
       const verificationEndpoint =
-      process.env.NEXT_PUBLIC_VERIFICATION_ENDPOINT || 'http://localhost:3000/api/verify-recaptcha';
+        process.env.NEXT_PUBLIC_VERIFICATION_ENDPOINT || 'http://localhost:3000/api/verify-recaptcha';
   
       const token = await executeRecaptcha();
       const response = await fetch(verificationEndpoint, {
@@ -82,7 +80,7 @@ export const Fields: React.FC<any> = (props: any) => {
       } 
     }, [executeRecaptcha, props]);
   
-    // You can use useEffect to trigger the verification as soon as the component is done being loaded
+    // Trigger the verification as soon as the component is done being loaded
     useEffect(() => {
       handleReCaptchaVerify();
     }, [handleReCaptchaVerify]);
@@ -98,6 +96,7 @@ export const Fields: React.FC<any> = (props: any) => {
                             control={control}
                             render={({ field }) => <TextField.Root {...field} />}
                         />
+                        <ErrorMessage errors={errors} name="firstName" />
                     </Box>
                     <Box className="grow basis-full">
                     <Text as="p">Last Name:</Text>
@@ -106,6 +105,7 @@ export const Fields: React.FC<any> = (props: any) => {
                             control={control}
                             render={({ field }) => <TextField.Root {...field} />}
                         />
+                        <ErrorMessage errors={errors} name="lastName" />
                     </Box>
                 </Flex>
                 <Flex gap="3">
@@ -116,6 +116,7 @@ export const Fields: React.FC<any> = (props: any) => {
                             control={control}
                             render={({ field }) => <TextField.Root {...field} />}
                         />
+                        <ErrorMessage errors={errors} name="email" />
                     </Box>
                     <Box className="grow basis-full">
                     <Text as="p">Phone:</Text>
@@ -124,6 +125,7 @@ export const Fields: React.FC<any> = (props: any) => {
                             control={control}
                             render={({ field }) => <TextField.Root {...field} />}
                         />
+                        <ErrorMessage errors={errors} name="phoneNumber" />
                     </Box>
                 </Flex>
                 <Box>
@@ -131,12 +133,12 @@ export const Fields: React.FC<any> = (props: any) => {
                     <Controller 
                         name="message"
                         control={control}
-                        render={({ field }) => <TextArea {...field} placeholder="Placeholder" />}
+                        render={({ field }) => <TextArea {...field} />}
                     />
+                    <ErrorMessage errors={errors} name="message" />
                 </Box>
                 <Button className="cursor-pointer">Submit</Button>
             </Flex>
-
         </form>
     )
 }

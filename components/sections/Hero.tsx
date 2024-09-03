@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { sanityImageUrlFor } from "@/lib/sanityImageUrlFor";
-import { Header } from "@/lovecchio-law/sanity.types"
+import { Header as HeaderContent } from "@/lovecchio-law/sanity.types"
 import { Heading, Section } from "@radix-ui/themes";
 import { ContentContainer } from "../container/ContentContainer";
 
-type HeroProps = Partial<Header>;
+type HeroProps = Partial<HeaderContent>;
 
 export const Hero: React.FC<HeroProps> = (props) => {
     const {title, backgroundImage, coverImage} = props;

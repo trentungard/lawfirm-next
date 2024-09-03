@@ -80,6 +80,17 @@ export type AboutCard = {
   position?: string
   title?: string
   description?: string
+  photoOfIndividual?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
 }
 
 export type Page = {
@@ -89,8 +100,8 @@ export type Page = {
   _updatedAt: string
   _rev: string
   header?: Header
-  about?: About
-  practice?: Array<
+  practice?: Practice
+  about?: Array<
     {
       _key: string
     } & AboutCard
@@ -101,7 +112,18 @@ export type Page = {
 export type Header = {
   _type: 'header'
   title?: string
-  image?: {
+  backgroundImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  coverImage?: {
     asset?: {
       _ref: string
       _type: 'reference'
@@ -122,10 +144,9 @@ export type Contact = {
   description?: string
 }
 
-export type AboutItem = {
-  _type: 'aboutItem'
+export type PracticeItem = {
+  _type: 'practiceItem'
   title?: string
-  subtitle?: string
   description?: string
   icon?: {
     asset?: {
@@ -138,15 +159,26 @@ export type AboutItem = {
     crop?: SanityImageCrop
     _type: 'image'
   }
+  backgroundImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
 }
 
-export type About = {
-  _type: 'about'
+export type Practice = {
+  _type: 'practice'
   sectionTitle?: string
   items?: Array<
     {
       _key: string
-    } & AboutItem
+    } & PracticeItem
   >
 }
 
@@ -218,8 +250,8 @@ export type AllSanitySchemaTypes =
   | Page
   | Header
   | Contact
-  | AboutItem
-  | About
+  | PracticeItem
+  | Practice
   | SanityImageCrop
   | SanityImageHotspot
   | SanityImageAsset

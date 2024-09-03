@@ -1,9 +1,9 @@
-import { Contact as ContactType } from "@/lovecchio-law/sanity.types"
+import { Contact as ContactContent } from "@/lovecchio-law/sanity.types"
 import { Box, Heading, Text, Section, Flex } from "@radix-ui/themes"
 import { ContactForm } from "../contactForm/ContactForm"
 import { ContentContainer } from "../container/ContentContainer"
 
-type ContactUi = Partial<ContactType>
+type ContactUi = Partial<ContactContent>
 
 export const Contact: React.FC<ContactUi> = ({title, email, phoneNumber, description}) => {
     return (
