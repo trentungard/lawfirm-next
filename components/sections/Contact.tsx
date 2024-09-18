@@ -10,7 +10,7 @@ export const Contact: React.FC<ContactUi> = ({title, email, phoneNumber, descrip
         <Section id="contact">
             <ContentContainer>
                 <Heading size='7'>{title}</Heading>
-                <Flex className='mt-8' gap="8">
+                <Flex className='mt-8 flex-col md:flex-row' gap="8">
                     <Box className='grow basis-full'>
                         <Text as="p" size='4'><b>Phone: </b>{phoneNumber}</Text>
                         <Text as="p" size='4'><b>Email: </b>{email}</Text>

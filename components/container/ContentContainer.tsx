@@ -11,7 +11,7 @@ import { PropsWithChildren } from "react"
 
 export const ContentContainer: React.FC<PropsWithChildren<WithClassName>> = ({children, className}) => {
     return (
-        <div className={cn(className, "max-w-max-desktop-container-width mx-auto")}>
+        <div className={cn(className, "max-w-max-desktop-container-width mx-auto w-3/4")}>
             {children}
         </div>
     )

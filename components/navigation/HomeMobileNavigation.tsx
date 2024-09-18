@@ -17,16 +17,14 @@ export const HomeMobileNavigation: React.FC = () => {
                 />
             ) : (
                 <MenuIcon 
-                    color='black'
+                    color='white'
                     height={50}
                     width={50}
                 />
             )}
             </Collapsible.Trigger>
-            <Collapsible.Content>
-                <div className='bg-black h-full z-10 absolute w-full left-0 top-0'>
-                    <Menu className="text-white absolute top-28 right-10" direction="column"/>
-                </div>
+            <Collapsible.Content className='bg-black h-[100vh] z-10 absolute w-5/6 right-0 top-0 collapsible-content'>
+                <Menu className="text-white absolute top-28 right-10" direction="column"/>
             </Collapsible.Content>
         </Collapsible.Root>
     )

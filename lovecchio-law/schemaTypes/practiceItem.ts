@@ -16,6 +16,7 @@ export const practiceItem = defineType({
       type: "image",
       name: "icon",
       options: { hotspot: true },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       type: "image",

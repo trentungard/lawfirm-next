@@ -12,7 +12,7 @@ export default async function Home() {
   const pageData = await getPages();
   const { about, contact, header, practice } = pageData[0];
   return (
-    <main>
+    <main className="w-full">
       <NavbarWrapper>
         <HomeNavigation />
         <HomeMobileNavigation />
