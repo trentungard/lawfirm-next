@@ -7,7 +7,6 @@ import { ContentContainer } from "../container/ContentContainer";
 export type AboutCardUi = Partial<AboutCardType>;
 
 export const AboutCard: React.FC<AboutCardUi>= ({ position, description, title, photoOfIndividual, name }) => {
-    console.log('bg image', photoOfIndividual)
     const backgroundImageUrl = photoOfIndividual ? sanityImageUrlFor(photoOfIndividual?.asset?._ref as string)?.width(400)?.url() : '';
     return (
         <Flex className='flex-col md:flex-row gap-0 md:gap-10'>

@@ -28,6 +28,7 @@
     "react-google-recaptcha-v3": "^1.10.1",
     "react-hook-form": "^7.52.2",
     "sanity": "3",
+    "sharp": "^0.33.5",
     "styled-components": "6",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",

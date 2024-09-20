@@ -11,7 +11,6 @@ export const PracticePanel: React.FC<any> = ({items}) => {
         const firstItem = items[0];
         setSelectedKey(firstItem._key);
     }, [items])
-
     const selectedItem = useMemo(() => items.filter((item: any) => item._key === selectedKey)[0], [items, selectedKey]);
     const updateSelectedKey = (key: string) => setSelectedKey(key);
 
