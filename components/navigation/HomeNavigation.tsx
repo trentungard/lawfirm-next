@@ -8,7 +8,7 @@ import Logo from "@/icons/Logo";
 export const HomeNavigation: React.FC = () => {
   return (
     <ContentContainer className='w-full flex flex-row items-center px-4 justify-between mt-4'>
-      <Link href="#">
+      <Link href="/#">
         <Logo  height={35} width={100} color="#fff"/>
       </Link>
       <Menu className="hidden md:block"/>

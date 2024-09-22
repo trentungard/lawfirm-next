@@ -10,12 +10,7 @@ import { Footer } from "@/components/sections/Footer";
 
 export default async function Home() {
   const pageData = await getPages();
-  console.log('page data', pageData);
   const { about, contact, header, practice } = pageData[0];
-  // console.log('about', about);
-  // console.log('contact', contact);
-  // console.log('header', header);
-  // console.log('practice', practice);
 
   return (
     <main className="w-full">

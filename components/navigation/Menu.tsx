@@ -19,7 +19,7 @@ export const Menu: React.FC<WithClassName<MenuProps>> = ({className, direction =
         <NavigationMenu className={className}>
             <NavigationMenuList className={`flex ${directionClassName} ${alignmentClassName} ${gapClassName}`}>
                 <NavigationMenuItem>
-                    <Link href="/#areas-pf-practice" legacyBehavior passHref>
+                    <Link href="./#areas-pf-practice" legacyBehavior passHref>
                         <NavigationMenuLink className={cva(`${textSizeClassName} NavigationMenuLink text-white`)()}>
                             Practice Areas
                         </NavigationMenuLink>
